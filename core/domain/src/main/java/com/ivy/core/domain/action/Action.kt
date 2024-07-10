@@ -10,6 +10,7 @@ abstract class Action<in Input, out Output> {
     protected open fun dispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     suspend operator fun invoke(input: Input): Output = withContext(dispatcher()) {
+
         action(input)
     }
 }
