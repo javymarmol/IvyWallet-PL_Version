@@ -14,12 +14,12 @@ class RemoteExchangeProviderFake: RemoteExchangeProvider {
             "CAD" to -3.0,
         ),
         "EUR" to mapOf(
-            "USD" to 1.08,
+            "EUR" to 1.08,
             "AUD" to 1.62,
             "CAD" to 1.43,
-        ),
+        )
     )
-    
+
     override suspend fun fetchExchangeRates(baseCurrency: CurrencyCode): RemoteExchangeProvider.Result {
         return RemoteExchangeProvider.Result(
             ratesMap = ratesMap[baseCurrency] as ExchangeRatesMap,

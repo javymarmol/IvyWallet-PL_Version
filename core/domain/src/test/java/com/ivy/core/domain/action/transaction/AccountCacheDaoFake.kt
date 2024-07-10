@@ -4,29 +4,35 @@ import com.ivy.core.persistence.algorithm.accountcache.AccountCacheDao
 import com.ivy.core.persistence.algorithm.accountcache.AccountCacheEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import java.time.Instant
 
 class AccountCacheDaoFake: AccountCacheDao {
 
-    private val accountCache = MutableStateFlow<List<AccountCacheEntity?>>(emptyList())
+    private val accounts = MutableStateFlow<List<AccountCacheEntity>>(emptyList())
 
     override fun findAccountCache(accountId: String): Flow<AccountCacheEntity?> {
-        TODO("Not yet implemented")
+        return accounts
+            .map { entities ->
+                entities.find { it.accountId == accountId }
+            }
     }
 
     override suspend fun findTimestampById(accountId: String): Instant? {
-        return accountCache.value.firstOrNull { it?.accountId == accountId }?.timestamp
+        return accounts.value.find { it.accountId == accountId }?.timestamp
     }
 
     override suspend fun save(cache: AccountCacheEntity) {
-        TODO("Not yet implemented")
+        accounts.value += cache
     }
 
     override suspend fun delete(accountId: String) {
-        TODO("Not yet implemented")
+        val account = accounts.value.find { it.accountId == accountId } ?: return
+        accounts.value -= account
     }
 
     override suspend fun deleteAll() {
-        TODO("Not yet implemented")
+        accounts.value = emptyList()
     }
 }
