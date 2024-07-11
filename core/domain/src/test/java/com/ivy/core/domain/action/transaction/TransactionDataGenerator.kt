@@ -22,37 +22,37 @@ import com.ivy.data.transaction.dummyTrnTimeDue
 import java.time.LocalDateTime
 import java.util.*
 
-fun account(): Account {
-    return Account(
-        id = UUID.randomUUID(),
-        name = "Account",
-        currency = "USD",
-        color = -16777216, // Black color
-        icon = "bank",
-        excluded = false,
-        folderId = null,
-        orderNum = 1.0,
-        state = AccountState.Default,
-        sync = Sync(
-            SyncState.Synced,
-            LocalDateTime.now()
-        )
-    )
-}
+//fun account(): Account {
+//    return Account(
+//        id = UUID.randomUUID(),
+//        name = "Account",
+//        currency = "USD",
+//        color = -16777216, // Black color
+//        icon = "bank",
+//        excluded = false,
+//        folderId = null,
+//        orderNum = 1.0,
+//        state = AccountState.Default,
+//        sync = Sync(
+//            SyncState.Synced,
+//            LocalDateTime.now()
+//        )
+//    )
+//}
 
-fun tag(): Tag {
-    return Tag(
-        id = "tag",
-        color = -16711936, // Green color
-        name = "Tag ",
-        orderNum = 1.0,
-        state = TagState.Default,
-        sync = Sync(
-            SyncState.Synced,
-            LocalDateTime.now()
-        )
-    )
-}
+//fun tag(): Tag {
+//    return Tag(
+//        id = "tag",
+//        color = -16711936, // Green color
+//        name = "Tag ",
+//        orderNum = 1.0,
+//        state = TagState.Default,
+//        sync = Sync(
+//            SyncState.Synced,
+//            LocalDateTime.now()
+//        )
+//    )
+//}
 
 fun category(): Category {
     return Category(
