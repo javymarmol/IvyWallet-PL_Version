@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalCoroutinesApi::class)
-
 package com.ivy
 
 import kotlinx.coroutines.Dispatchers
@@ -12,9 +10,11 @@ import org.junit.jupiter.api.extension.AfterEachCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class MainCoroutineExtension(
     val testDispatcher: TestDispatcher = StandardTestDispatcher()
 ): BeforeEachCallback, AfterEachCallback {
+
     override fun beforeEach(context: ExtensionContext?) {
         Dispatchers.setMain(testDispatcher)
     }
