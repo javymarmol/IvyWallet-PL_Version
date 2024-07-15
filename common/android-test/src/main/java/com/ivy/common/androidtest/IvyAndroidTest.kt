@@ -32,7 +32,7 @@ abstract class IvyAndroidTest {
 
     @After
     open fun tearDown() {
-        // Do nothing
+        db.close()
     }
 
     private fun clearDataStore() = runBlocking {
